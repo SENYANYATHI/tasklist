@@ -1,9 +1,10 @@
 .task-list {
     display: flex;
-    background-color: blue;
     color: black;
     width: 500px;
-    height: 50px;
+    height: 70px;
     margin-top: 5px;
+    background-color: white;
+    justify-content: space-between;
 
 }

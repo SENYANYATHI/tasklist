@@ -1,9 +1,6 @@
 import "../css/add.css";
 import React, {useState} from "react"
-
-
-
-
+import pic from "../components/pic.jpg"
 
 
 function AddTask (props) {
@@ -16,17 +13,18 @@ function AddTask (props) {
     props.add (task,priority);
  })
     return(
-    
         <div >
 
-          
             
-    <button id="btn" type="submit">LOGOUT</button>
- 
-            <h2 style={{margin:'5px'}}>
-                
+       <div className="details">
+       <h2 style={{margin:'5px'}}>
+            <img src={pic} alt="" style={{width:"50px", height:"50px" }}/>
                Mashego Senyanyathi Matshepo
+               <button id="btn" type="submit">LOGOUT</button>
             </h2>
+    
+           
+            </div>
 
        
 
@@ -38,10 +36,7 @@ function AddTask (props) {
 <option value="medium">Medium</option>
 <option value="low">Low</option>
 </select>
-
-    <button  onClick={add}  id="btn">add</button>
-       
-
+ <button onClick={add} id="btn">add</button>
         </div>
         
     )

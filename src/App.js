@@ -1,17 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
-import React, {useState}from 'react';
-import AddTask from './components/AddDetails';
-import DisplayTasks from './components/displaytask';
-import home from './components/homepage'
+import React, {useEffect, useState}from 'react';
+import Home from './components/homepage';
+import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
+import SignUp from './components/signup';
+import Login from './components/login';
+
+
 
 function App() {
 
   const[projects,setProject] = useState([]);
+  useEffect(() => {
 
-  const addTask =((Task,priority)=> {
+  })
 
-    setProject((task)=> [...task, {
+  const addTask =((Task,priority) => {
+
+    setProject((task) => [...task, {
  
     task:Task,
     priority:priority
@@ -19,20 +25,27 @@ function App() {
 
     }])
 
-
+console.log(Task)
     
   })
   return (
+   
     
-    <div className="container">
-      <AddTask add={addTask}/>
-      <DisplayTasks list={projects}/>
-      <home add={addTask}/>
-      
+    
+       
+    <Router>
+
+<Switch>
   
+<Route exact path="/" component={Login}></Route>
+
+<Route path="/signup" component={SignUp}></Route>
+
+<Route path="/Home" ><Home list={projects} add={addTask}/></Route>
+  
+</Switch>
+    </Router>
       
-    </div>
-    
   );
 }
 

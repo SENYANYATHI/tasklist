@@ -3,8 +3,7 @@ body {
   background-color: azure;
 }
   
-  
-  input {
+input {
     width: 300px;
     height:30px;
     background-color: white;
@@ -45,4 +44,11 @@ button   {
     height: 40px;
     color: black;
     
+}
+.details {
+  border-radius: 12px;
+  background-color: antiquewhite;
+ 
+  justify-content: space-between;
+
 }

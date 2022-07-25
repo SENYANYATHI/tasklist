@@ -1,20 +1,18 @@
 import AddTask from './AddDetails';
-import DisplayTasks from './displaytask';
+import { DisplayTasks } from './displaytask';
 
 
-function home () {
+
+function Home (props) {
 
     return (
 
-        <div>
+        <div className="container">
 
-
-
-
-
-<AddTask add={addTask}/>
-      <DisplayTasks list={projects}/>
+<DisplayTasks list={props.list}/>
+<AddTask add={props.add}/>
+      
         </div>
-    )
+    );
 }
-export default home;
+export default Home;
