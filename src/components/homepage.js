@@ -9,8 +9,9 @@ function Home (props) {
 
         <div className="container">
 
-<DisplayTasks list={props.list}/>
+
 <AddTask add={props.add}/>
+<DisplayTasks list={props.list}/>
       
         </div>
     );

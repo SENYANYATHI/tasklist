@@ -7,11 +7,13 @@ body {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 }
-.container {
- 
-  justify-content: column;
+.Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  height: 400px;
+  height: 800px;
+  
 }
 
 

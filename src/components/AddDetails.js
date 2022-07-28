@@ -1,6 +1,7 @@
 import "../css/add.css";
 import React, {useState} from "react"
 import pic from "../components/pic.jpg"
+import {FaPlus} from "react-icons/fa";
 
 
 function AddTask (props) {
@@ -20,7 +21,7 @@ function AddTask (props) {
        <h2 style={{margin:'5px'}}>
             <img src={pic} alt="" style={{width:"50px", height:"50px" }}/>
                Mashego Senyanyathi Matshepo
-               <button id="btn" type="submit">LOGOUT</button>
+               <button id="btn" type="submit" style={{margingBottom:"100px"}}>LOGOUT</button>
             </h2>
     
            
@@ -36,7 +37,7 @@ function AddTask (props) {
 <option value="medium">Medium</option>
 <option value="low">Low</option>
 </select>
- <button onClick={add} id="btn">add</button>
+ <FaPlus  onClick={add}   style={{width:"30px", height:"30px"}}></FaPlus>
         </div>
         
     )

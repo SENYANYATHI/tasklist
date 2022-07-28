@@ -8,6 +8,8 @@ import Login from './components/login';
 
 
 
+
+
 function App() {
 
   const[projects,setProject] = useState([]);
@@ -31,13 +33,16 @@ console.log(Task)
   return (
    
     
-    
+    <div>
+   
+
+     
        
     <Router>
 
 <Switch>
   
-<Route exact path="/" component={Login}></Route>
+<Route exact path="/login" component={Login}></Route>
 
 <Route path="/signup" component={SignUp}></Route>
 
@@ -45,6 +50,8 @@ console.log(Task)
   
 </Switch>
     </Router>
+
+    </div>
       
   );
 }
