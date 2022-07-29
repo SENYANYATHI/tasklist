@@ -46,7 +46,7 @@ console.log(Task)
 
 <Route path="/signup" component={SignUp}></Route>
 
-<Route path="/Home" ><Home list={projects} add={addTask}/></Route>
+<Route path="/home" ><Home list={projects} add={addTask}/></Route>
   
 </Switch>
     </Router>

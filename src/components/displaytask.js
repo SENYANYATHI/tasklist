@@ -31,28 +31,16 @@ function DisplayTasks (props) {
                                             {task.task}
                                             </h4>
                                              </div>
-                                              <div className='Medium-line'></div>
+                                              <div className='Medium-line' style={{width:"500px"}}></div>
                                               
                                                  <div>
                                                      <button id="submit">complete task</button>
                                                      </div>
                                                      
                                                  </div> 
-                                                 )}:
+                                                 )}
                                                  
-                                (
-                                                     <div className="task-list">
-                                                    <div>
-                                     <h4 style={{paddinLeft:'12px', paddingTop:'25px'}}>
-                                        {task.task}</h4>
-                                     </div>
-                                                    <div className="Low-line"></div>
-                                                    <div>
-                                                     <button id="submit">complete task</button>
-                                                     </div>
-                                                     
-                                                 </div> 
-                                                 )
+                               
 
                                                  
                                                  </div>     
