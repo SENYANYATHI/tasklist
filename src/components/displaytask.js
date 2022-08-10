@@ -1,5 +1,6 @@
 import React from "react";
 import '../css/displaytask.css'
+import taskservice from "../config/taskservice";
 
 
 function DisplayTasks (props) {

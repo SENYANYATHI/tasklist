@@ -20,7 +20,7 @@ function SignUp () {
 
         createUserWithEmailAndPassword(auth,  email, password).then (() => {
 
-            history.push("/home");
+            history.push('/home');
         }).catch ((error)=>{
             console.log(error);
         })
@@ -50,7 +50,7 @@ function SignUp () {
 <button  onClick={register}>Create Account</button>
 <br></br>
 <br></br>
-<label>Already have an account ?</label><Link to="/login">Login</Link>
+<label>Already have an account ?</label><Link to="/">Login</Link>
 
 OR
 

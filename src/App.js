@@ -5,6 +5,7 @@ import Home from './components/homepage';
 import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
 import SignUp from './components/signup';
 import Login from './components/login';
+import {collection,getDocs} from "firebase/firestore"
 
 
 
@@ -14,6 +15,7 @@ function App() {
 
   const[projects,setProject] = useState([]);
   useEffect(() => {
+    
 
   })
 
@@ -42,11 +44,11 @@ console.log(Task)
 
 <Switch>
   
-<Route exact path="/login" component={Login}></Route>
+<Route exact path="/" component={Login}></Route>
 
 <Route path="/signup" component={SignUp}></Route>
 
-<Route path="/home" ><Home list={projects} add={addTask}/></Route>
+<Route path='/home' ><Home list={projects} add={addTask}/></Route>
   
 </Switch>
     </Router>
