@@ -3,6 +3,7 @@ import React, {useState} from "react"
 import pic from "../components/pic.jpg"
 import {FaPlus} from "react-icons/fa";
 import {db} from "../config/firebase"
+import {useHistory} from 'react-router-dom'
 import {addDoc, collection,completedTask} from "firebase/firestore"
 
 
@@ -25,6 +26,12 @@ function AddTask (props) {
     
     props.add (task,priority);
  })
+ let history = useHistory() ;
+ const logout= (() => {
+    history.push('/');
+ })
+
+  
     return(
         <div >
 
@@ -33,7 +40,7 @@ function AddTask (props) {
        <h2 style={{margin:'5px'}}>
             <img src={pic} alt="" style={{width:"50px", height:"50px" }}/>
                Mashego Senyanyathi Matshepo
-               <button id="btn" type="submit" style={{margingBottom:"100px"}}>LOGOUT</button>
+               <button id="btn" type="submit" style={{margingBottom:"100px"}} onClick={logout}>LOGOUT</button>
             </h2>
     
            
@@ -48,6 +55,7 @@ function AddTask (props) {
 <option value="high">High</option>
 <option value="medium">Medium</option>
 <option value="low">Low</option>
+
 </select>
  <FaPlus  onClick={add}   style={{width:"30px", height:"30px"}}></FaPlus>
         </div>

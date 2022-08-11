@@ -4,7 +4,8 @@ import google from "../images/google.jpg";
 import {Link} from 'react-router-dom'
 import {signInWithEmailAndPassword} from "firebase/auth"
 import {auth} from  '../config/firebase'
-import pic from "../components/pic.jpg"
+import image from "../images/image1.jpg"
+
 
 
 
@@ -34,9 +35,12 @@ function Login () {
     return(
         
 
-        <div className="Container" >
-            <img src={pic} alt="" style={{width:"50px", height:"50px" }}/>
-            <h1>Welcome Back</h1>
+        <div className="Container"  >
+
+
+
+    
+            <h1 style={{textAlign:"center" , textTransform:"capitalize"}}>Welcome Back</h1>
             <br></br>
             <h1 >manage your task easily</h1>
             <br></br>
