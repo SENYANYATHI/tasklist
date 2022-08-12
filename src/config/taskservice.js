@@ -1,6 +1,6 @@
 import {db} from "./firebase"
 
-import { collection, getDocs, getDoc, addDoc,doc } from "firebase/firestore";
+import { collection, getDocs, getDoc, addDoc,deleteDoc,doc } from "firebase/firestore";
 
 const TaskcollectionRef =collection(db,"tasks")
 class TasksDetailsService {
@@ -8,14 +8,17 @@ class TasksDetailsService {
     Addtask=(newTask) => {
         return addDoc(TaskcollectionRef,newTask)
     };
-   
+   comletedTask=(id)=> {
+    const taskDoc =doc (db,"tasks", id);
+    return deleteDoc(taskDoc);
+   };
     
     getAllTasks=()=>{
         return getDocs(TaskcollectionRef);
     };
     getTask=(id) =>{
-        const TasksDetailsService =doc(db,"tasks",id);
-        return getDoc(TasksDetailsService);
+        const taskDoc=doc(db,"tasks",id);
+        return getDoc(taskDoc);
     };
 }
 

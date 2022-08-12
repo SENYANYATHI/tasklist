@@ -4,13 +4,20 @@ import pic from "../components/pic.jpg"
 import {FaPlus} from "react-icons/fa";
 import {db} from "../config/firebase"
 import {useHistory} from 'react-router-dom'
-import {addDoc, collection,completedTask} from "firebase/firestore"
+import {addDoc, collection,deleteDoc} from "firebase/firestore"
 
 
 function AddTask (props) {
 
     const [task,setTask] = useState('');
     const [priority,setPriority] = useState('');
+
+    const newTask = {
+        task,
+        priority,
+
+    };
+    console.log(newTask);
 
  const add =(() => {
     const collectionRef =collection(db,"tasks");
@@ -23,8 +30,10 @@ function AddTask (props) {
         alert("task added successfully")
 
     })
+
     
-    props.add (task,priority);
+   
+ props.add(task,priority);
  })
  let history = useHistory() ;
  const logout= (() => {
@@ -58,6 +67,7 @@ function AddTask (props) {
 
 </select>
  <FaPlus  onClick={add}   style={{width:"30px", height:"30px"}}></FaPlus>
+
         </div>
         
     )

@@ -1,10 +1,29 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import '../css/displaytask.css'
-import taskservice from "../config/taskservice";
+import TasksDetailsService from "../config/taskservice";
 
 
 function DisplayTasks (props) {
 
+    const[task, setTasks]= useState([]);
+    useEffect(() => {
+            getAllTasks();
+
+    }, []);
+
+ const getAllTasks = async() => {
+        const data = await TasksDetailsService.getAllTasks();
+        console.log(data.docs);
+        setTasks(data.docs.map((doc) => ({...doc.data(), id :doc.id })))
+
+    };
+    const deleteTask=async(id) => {
+        await TasksDetailsService.completedTask(id)
+        alert("task completed")
+
+    }
+  
+  
     return (
         <div>
            {props.list.map((task) => (
@@ -19,7 +38,7 @@ function DisplayTasks (props) {
                                  <div className='High-line'></div>
                         
                                      <div>
-                                     <button id="submit" >complete task</button>
+                                     <button id="submit"  onClick={deleteTask}>complete task</button>
                                      </div>
                                      
                                  </div>
