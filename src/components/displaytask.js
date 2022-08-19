@@ -3,15 +3,16 @@ import '../css/displaytask.css'
 import TasksDetailsService from "../config/taskservice";
 
 
-function DisplayTasks (props) {
 
-    const[task, setTasks]= useState([]);
+function DisplayTasks (getTaskId) {
+
+    const[tasks, setTasks]= useState([]);
     useEffect(() => {
-            getAllTasks();
+            getTasks();
 
     }, []);
 
- const getAllTasks = async() => {
+ const getTasks = async() => {
         const data = await TasksDetailsService.getAllTasks();
         console.log(data.docs);
         setTasks(data.docs.map((doc) => ({...doc.data(), id :doc.id })))
@@ -19,55 +20,68 @@ function DisplayTasks (props) {
     };
     const deleteTask=async(id) => {
         await TasksDetailsService.completedTask(id)
-        alert("task completed")
+        getTaskId();
+       
 
     }
-  
-  
-    return (
-        <div>
-           {props.list.map((task) => (
-
-            <div>
-                {task.priority === "high" ? ( <div className="task-list">
-
-                                 <div>
-                                     <h4 style={{paddinLeft:'12px', paddingTop:'25px'}}>
-                                        {task.task}</h4>
-                                     </div>
-                                 <div className='High-line'></div>
-                        
-                                     <div>
-                                     <button id="submit"  onClick={deleteTask}>complete task</button>
-                                     </div>
-                                     
-                                 </div>
-                                  ):(
-                                
-                                    <div className="task-list">
-
-                                     <div>
-                                         <h4 style={{paddinLeft:'12px', paddingTop:'25px'}}>
-                                            {task.task}
-                                            </h4>
-                                             </div>
-                                              <div className='Medium-line' style={{width:"500px"}}></div>
-                                              
-                                                 <div>
-                                                     <button id="submit">complete task</button>
-                                                     </div>
-                                                     
-                                                 </div> 
-                                                 )}
-                                                 
-                               
-
-                                                 
-                                                 </div>     
-               
-           ))}
+    return(
+    
+    
+        <>
+        <div className="mb-2">
+            <button variant="dark edit" onClick={getTasks }>
+                REFRESH LIST
+                </button>
+    
         </div>
+    
+        {/*<pre>{JSON.stringify(employees,undefined,2)}</pre>*/}
+        
+        <caption><strong>tasklist</strong></caption>
+            
+        
+            <table striped bordered hover size="sm">
+        
+        <thead>
+            <tr>
+                <th>TASKSId</th>
+                <th>TASKS</th>
+                <th>PRIORITY</th>
+              
+            </tr>
+        
+        </thead>
+        
+        <tbody>
+        
+  
+  {tasks.map((doc,index) => {
+    return (
+    
+       <tr key={doc.id}>
+        <td>{index +1}</td>
+        <td>{doc.task}</td>
+        <td>{doc.priority}</td>
+      
 
+        <td>
+   
+<button variant="dark delete" className="delete" onClick={(e) => deleteTask(doc.id) }>
+            delete
+            </button>
+
+</td>
+
+       </tr>
+      
+   
+
+    );
+    
+  })}
+  </tbody>
+  </table>
+  </>
     );
 }
 export   { DisplayTasks };

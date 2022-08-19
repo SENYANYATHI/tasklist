@@ -9,6 +9,7 @@ import image from "../images/image1.jpg"
 
 
 
+
 function Login () {
     const [email,setEmail]= useState('');
     const [password, setPassword]= useState('');
@@ -39,14 +40,14 @@ function Login () {
 
 
 
-    
-            <h1 style={{textAlign:"center" , textTransform:"capitalize"}}>Welcome Back</h1>
+            <h1 >Welcome Back</h1>
             <br></br>
             <h1 >manage your task easily</h1>
             <br></br>
             <br></br>
             
 <label>Email Address</label>
+
 <input type="email" placeholder="enter email" onChange={(e) =>setEmail (e.target.value)}/>
  <br></br>
  <br></br>
@@ -64,7 +65,7 @@ function Login () {
 
 OR
 
-<button style={{marginTop:"50px"}}> <img src={google} alt="matshepo" style={{width:"20px", height:"20px" }}/>
+<button style={{marginTop:"50px"}}> <img src={google} alt="matshepo" style={{width:"20px", height:"20px" }} onClick={{login}}/>
 sign in with google</button>
 
         </div>

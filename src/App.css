@@ -5,21 +5,23 @@
 body {
   background-color: #f7f7f7f7;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
+ 
 }
 .Container {
-  display: flex;
+ display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 800px;
-  border-radius: 5px solid green;
+  background-image: url(./images/image2.jpg);
+ 
 
-  
+
 }
 h1{
   text-align: center;
 text-transform: capitalize;
+color: black;
 }
 
 

@@ -1,40 +1,47 @@
 import "../css/add.css";
-import React, {useState} from "react"
+import React, {useState,useEffect} from "react"
 import pic from "../components/pic.jpg"
 import {FaPlus} from "react-icons/fa";
-import {db} from "../config/firebase"
 import {useHistory} from 'react-router-dom'
-import {addDoc, collection,deleteDoc} from "firebase/firestore"
+import TasksDetailsService from "../config/taskservice";
 
 
-function AddTask (props) {
+function AddTask (id) {
 
     const [task,setTask] = useState('');
     const [priority,setPriority] = useState('');
+    const [message , setMessage]=useState({error:false, msg: ""});
 
+    const handleSubmit= async (e)=> {
+        e.preventDefault ();
+        setMessage("");
+        
+
+    if (task === "" || priority === ""  ) {
+        setMessage({error:true,msg: "ALL FIELDS ARE REQUIRED"});
+        return;
+    }
+   
     const newTask = {
         task,
         priority,
 
     };
+
     console.log(newTask);
-
- const add =(() => {
-    const collectionRef =collection(db,"tasks");
-    const tasks ={
-        task:task,
-        priority:priority,
-    };
+    try {
+       await TasksDetailsService.AddTask(newTask);
+        message({error:false, msg: "new employee added successfully"});
+    } catch(err){
+    setMessage ({error: true ,msg: err.message});
    
-    addDoc(collectionRef,tasks).then (()=>{
-        alert("task added successfully")
-
-    })
-
-    
+    }
    
- props.add(task,priority);
- })
+    setTask("");
+    setPriority("");
+};
+
+
  let history = useHistory() ;
  const logout= (() => {
     history.push('/');
@@ -45,7 +52,7 @@ function AddTask (props) {
         <div >
 
             
-       <div className="details">
+       <div className="details" >
        <h2 style={{margin:'5px'}}>
             <img src={pic} alt="" style={{width:"50px", height:"50px" }}/>
                Mashego Senyanyathi Matshepo
@@ -56,7 +63,7 @@ function AddTask (props) {
             </div>
 
        
-
+<form onSubmit={handleSubmit}>
 <input placeholder="Add  Task" onChange={(e) => setTask(e.target.value)}/>
 
 <select onChange={(e) => setPriority(e.target.value)}>
@@ -66,9 +73,11 @@ function AddTask (props) {
 <option value="low">Low</option>
 
 </select>
- <FaPlus  onClick={add}   style={{width:"30px", height:"30px"}}></FaPlus>
-
+ <FaPlus  style={{width:"30px", height:"30px"}}></FaPlus>
+ </form>
         </div>
+        
+        
         
     )
 }

@@ -6,6 +6,7 @@ import {BrowserRouter as Router , Switch , Route} from 'react-router-dom';
 import SignUp from './components/signup';
 import Login from './components/login';
 import {collection,getDocs} from "firebase/firestore"
+import GoogleLogin from 'react'
 
 
 
@@ -32,6 +33,12 @@ function App() {
 console.log(Task)
     
   })
+  const handleLogin=(googleData) =>{
+    console.log(googleData);
+  };
+  const handleFilure =(result) => {
+  alert(result);
+  }
   return (
    
     
@@ -49,6 +56,14 @@ console.log(Task)
 <Route path="/signup" component={SignUp}></Route>
 
 <Route path='/home' ><Home list={projects} add={addTask}/></Route>
+<GoogleLogin>
+  clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+  buttonText={"Log in with google"}
+  onSuccess={handleLogin}
+  onFailure={handleFilure}
+  cookiePolicy={"single_host_orign"}
+
+</GoogleLogin>
   
 </Switch>
     </Router>
