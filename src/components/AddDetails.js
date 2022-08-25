@@ -1,51 +1,67 @@
 import "../css/add.css";
-import React, {useState,useEffect} from "react"
+import React, {useState} from "react"
 import pic from "../components/pic.jpg"
 import {FaPlus} from "react-icons/fa";
 import {useHistory} from 'react-router-dom'
+import {db} from '../config/firebase';
 import TasksDetailsService from "../config/taskservice";
+import { addDoc, collection } from "firebase/firestore";
+import { async } from "@firebase/util";
 
 
-function AddTask (id) {
+function AddTask (props) {
 
     const [task,setTask] = useState('');
     const [priority,setPriority] = useState('');
     const [message , setMessage]=useState({error:false, msg: ""});
 
-    const handleSubmit= async (e)=> {
-        e.preventDefault ();
-        setMessage("");
-        
+  
 
-    if (task === "" || priority === ""  ) {
-        setMessage({error:true,msg: "ALL FIELDS ARE REQUIRED"});
-        return;
-    }
-   
-    const newTask = {
-        task,
-        priority,
-
-    };
-
-    console.log(newTask);
-    try {
-       await TasksDetailsService.AddTask(newTask);
-        message({error:false, msg: "new employee added successfully"});
-    } catch(err){
-    setMessage ({error: true ,msg: err.message});
-   
-    }
-   
-    setTask("");
-    setPriority("");
+const add =(()=>{
+    const TaskcollectionRef =collection(db,"tasks");
+const priorities ={
+    task,
+    priority
 };
-
+console.log(task,priority)
+    
+    addDoc(TaskcollectionRef,priorities).then(() =>{
+        alert("add succefully")
+    }).catch((err) => {
+        console.log(err)
+    })
+    props.add(task,priority);
+    
+})
 
  let history = useHistory() ;
  const logout= (() => {
     history.push('/');
  })
+ const handleSubmit=async(e)=>{
+    e.preventDefault();
+
+    setMessage("");
+    if(task ==="" || priority ===""){
+        setMessage({error:true,msg:"ALL FIELD ARE MENDATORY"});
+        return;
+    }
+    const newTask={
+        task,
+        priority
+    }
+    console.log(newTask);
+
+    try{
+await TasksDetailsService.AddTask(newTask);
+setMessage({error:false,msg:"new task added"});
+    }catch (err){
+        setMessage({error:true,msg:err.message});
+    }
+    setTask("");
+    setPriority("");
+
+ };
 
   
     return(
@@ -64,16 +80,16 @@ function AddTask (id) {
 
        
 <form onSubmit={handleSubmit}>
-<input placeholder="Add  Task" onChange={(e) => setTask(e.target.value)}/>
+<input placeholder="Add  Task"  onChange={(e) => setTask(e.target.value)}/>
 
-<select onChange={(e) => setPriority(e.target.value)}>
+<select  onChange={(e) => setPriority(e.target.value)}>
     <option value="">priority status</option>
 <option value="high">High</option>
 <option value="medium">Medium</option>
 <option value="low">Low</option>
 
 </select>
- <FaPlus  style={{width:"30px", height:"30px"}}></FaPlus>
+ <FaPlus  style={{width:"30px", height:"30px"}} onClick={add}></FaPlus>
  </form>
         </div>
         

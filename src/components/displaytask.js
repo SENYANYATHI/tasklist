@@ -23,7 +23,7 @@ function DisplayTasks (getTaskId) {
         getTaskId();
        
 
-    }
+    } 
     return(
     
     
@@ -47,6 +47,7 @@ function DisplayTasks (getTaskId) {
                 <th>TASKSId</th>
                 <th>TASKS</th>
                 <th>PRIORITY</th>
+                <th>ACTION</th>
               
             </tr>
         
@@ -58,7 +59,7 @@ function DisplayTasks (getTaskId) {
   {tasks.map((doc,index) => {
     return (
     
-       <tr key={doc.id}>
+       <tr key={doc.id} >
         <td>{index +1}</td>
         <td>{doc.task}</td>
         <td>{doc.priority}</td>
@@ -66,8 +67,8 @@ function DisplayTasks (getTaskId) {
 
         <td>
    
-<button variant="dark delete" className="delete" onClick={(e) => deleteTask(doc.id) }>
-            delete
+<button variant="dark delete" className="complete" onClick={(e) => deleteTask(doc.id) }>
+            complete
             </button>
 
 </td>

@@ -4,7 +4,7 @@ import google from "../images/google.jpg";
 import {Link} from 'react-router-dom'
 import {signInWithEmailAndPassword} from "firebase/auth"
 import {auth} from  '../config/firebase'
-import image from "../images/image1.jpg"
+
 
 
 

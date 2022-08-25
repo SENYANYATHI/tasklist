@@ -5,6 +5,7 @@
 body {
   background-color: #f7f7f7f7;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+border: #3f3a3af7;
  
 }
 .Container {
@@ -13,10 +14,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 800px;
-  background-image: url(./images/image2.jpg);
  
-
-
 }
 h1{
   text-align: center;

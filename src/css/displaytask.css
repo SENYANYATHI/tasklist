@@ -38,33 +38,4 @@ caption {
     text-emphasis: none;
     text-decoration: solid;
   }
-  table {
-    
-    border: 1px solid black;
-    border-collapse: collapse;
-    text-align: center;
-    vertical-align: middle;
-    flex-direction: column;
-    }
-    thead {
-     background: linear-gradient(black ,white);    
-     letter-spacing: 1px;
-      font-size: .875rem;
-      text-transform: uppercase;
-    }
-     
-  thead th {
-    font-weight: bold;
-    font-size: 24px;
-    width: 25%;
-  
-  }
-  th,td {
-     
-      padding: 10px ;
-      border: 1px solid black;
-  }
-  tbody th {
-    background-color: #fff;
-    text-align: left;
-  }
+ 

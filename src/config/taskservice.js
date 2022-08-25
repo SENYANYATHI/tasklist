@@ -10,16 +10,16 @@ class TasksDetailsService {
         return addDoc(TaskcollectionRef,newTask)
     };
    comletedTask=(id)=> {
-    const taskdetails =doc (db,"tasks", id);
-    return deleteDoc(taskdetails);
+    const taskDoc =doc (db,"tasks", id);
+    return deleteDoc(taskDoc);
    };
     
     getAllTasks=()=>{
         return getDocs(TaskcollectionRef);
     };
     getTask=(id) =>{
-        const taskdetails=doc(db,"tasks",id);
-        return getDoc(taskdetails);
+        const taskDoc=doc(db,"tasks",id);
+        return getDoc(taskDoc);
     };
 }
 
